@@ -24,6 +24,7 @@
     <Compile Include="main.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dockerfile" />
     <Content Include="requirements.txt" />
     <Content Include="test.py" />
   </ItemGroup>
