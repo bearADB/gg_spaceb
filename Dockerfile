@@ -1,15 +1,12 @@
-﻿# Sử dụng Python nhẹ, slim
+﻿# Dockerfile hoàn chỉnh với fix PORT
 FROM python:3.11-slim
 
-# Thư mục làm việc
 WORKDIR /app
 
-# Copy requirements và cài đặt
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy toàn bộ source code
 COPY . .
 
-# Sử dụng Gunicorn với 1 worker để tiết kiệm RAM
-CMD ["gunicorn", "-w", "1", "-k", "uvicorn.workers.UvicornWorker", "main:app", "-b", "0.0.0.0:8080"]
+# entrypoint shell để sử dụng PORT từ Cloud Run
+CMD exec gunicorn -w 1 -k uvicorn.workers.UvicornWorker main:app -b 0.0.0.0:${PORT:-8080}
