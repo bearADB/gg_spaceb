@@ -1,7 +1,7 @@
 ﻿import requests
 
 # Thay URL này bằng Cloud Run URL của bạn
-BASE_URL = "https://spacebserver-732200390205.europe-west1.run.app"
+BASE_URL = "https://spaceb2-732200390205.europe-west1.run.app"
 
 def get_token(username: str, password: str):
     url = f"{BASE_URL}/token"
